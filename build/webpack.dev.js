@@ -30,7 +30,7 @@ const devConfig = merge(baseConfig, {
 
 // hot-reload
 // 这里需要特别注意loaders顺序
-devConfig.module.loaders[1].use.unshift('react-hot-loader/webpack');
+// devConfig.module.loaders[0].use.unshift('react-hot-loader/webpack');
 
 
 module.exports = devConfig;

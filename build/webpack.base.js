@@ -1,7 +1,5 @@
 const webpack = require('webpack');
-const {
-    CheckerPlugin
-} = require('awesome-typescript-loader')
+
 const autoprefixer = require('autoprefixer');
 const paths = require('./paths');
 const path = require('path');
@@ -61,16 +59,17 @@ module.exports = {
     },
     devtool: 'source-map',
     module: {
-        loaders: [{
-                enforce: "pre",
-                test: /\.(ts|tsx)$/,
-                use: ['tslint-loader'],
-                include: path.resolve(__dirname, '../src'),
-                exclude: path.resolve(__dirname, '../node_modules')
-            },
+        loaders: [
+            // {
+            //     enforce: "pre",
+            //     test: /\.(ts|tsx)$/,
+            //     use: ['tslint-loader'],
+            //     include: path.resolve(__dirname, '../src'),
+            //     exclude: path.resolve(__dirname, '../node_modules')
+            // },
             {
-                test: /\.(ts|tsx)$/,
-                use: ['awesome-typescript-loader'],
+                test: /\.(js|jsx)$/,
+                use: [,'babel-loader'],
                 include: path.resolve(__dirname, '../src'),
                 exclude: path.resolve(__dirname, '../node_modules')
             },
@@ -102,8 +101,5 @@ module.exports = {
                 },
             },
         ]
-    },
-    plugins: [
-        new CheckerPlugin()
-    ]
+    }
 }
